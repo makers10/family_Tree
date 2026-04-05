@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    transition: background-color 200ms, color 200ms;
+  }
+
+  .dark body {
+    background-color: #020617;
+    color: #f1f5f9;
+  }
+}
+
+/* react-flow overrides */
+.react-flow__attribution {
+  opacity: 0.3;
+}
