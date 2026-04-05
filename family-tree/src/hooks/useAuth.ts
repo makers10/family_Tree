@@ -1,16 +1,21 @@
 import { useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 import { useAuthStore } from '@/store/useAuthStore'
 
 export function useAuthListener() {
   const { setUser, setSession, setLoading } = useAuthStore()
 
   useEffect(() => {
+    if (!isSupabaseConfigured) {
+      setLoading(false)
+      return
+    }
+
     supabase.auth.getSession().then(({ data }) => {
       setSession(data.session)
       setUser(data.session?.user ?? null)
       setLoading(false)
-    })
+    }).catch(() => setLoading(false))
 
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)

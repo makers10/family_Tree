@@ -15,7 +15,7 @@ function AppRoutes() {
       <Route path="/register" element={<AuthPage />} />
       <Route path="/trees" element={<ProtectedRoute><TreeListPage /></ProtectedRoute>} />
       <Route path="/trees/:treeId" element={<ProtectedRoute><TreePage /></ProtectedRoute>} />
-      <Route path="*" element={<Navigate to="/trees" replace />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   )
 }
