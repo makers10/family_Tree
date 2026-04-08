@@ -1,6 +1,7 @@
 export type RelationshipType = 'parent_child' | 'spouse' | 'sibling' | 'extramarital'
 export type ContributorRole = 'owner' | 'editor' | 'viewer'
 export type Gender = 'male' | 'female' | 'other'
+export type PrivacyLevel = 'public' | 'private' | 'contributors_only'
 
 export interface Person {
   id: string
@@ -13,6 +14,7 @@ export interface Person {
   cloudinaryPublicId: string | null
   createdBy: string
   createdAt: string
+  privacyLevel?: PrivacyLevel
 }
 
 export interface FamilyTree {
@@ -21,6 +23,8 @@ export interface FamilyTree {
   ownerId: string
   isPublic: boolean
   createdAt: string
+  privacyLevel?: PrivacyLevel
+  allowedViewers?: string[]
 }
 
 export interface Relationship {
