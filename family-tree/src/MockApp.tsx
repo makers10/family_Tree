@@ -290,7 +290,7 @@ function LoginPage({ onLogin }: { onLogin: () => void }) {
           </div>
 
           <div style={{ display: 'flex', gap: 10 }}>
-            {[['🔵', 'Google'], ['⚫', 'GitHub'], ['🔷', 'Facebook']].map(([icon, name]) => (
+            {[['🔵', 'Google'], ['📸', 'Instagram'], ['⚫', 'X'], ['🔷', 'Facebook']].map(([icon, name]) => (
               <button key={name as string} style={{
                 flex: 1, height: 42, borderRadius: 11, border: '1.5px solid #e2e8f0',
                 background: 'white', cursor: 'pointer', fontWeight: 600, fontSize: 13,
@@ -338,8 +338,20 @@ function TreeListPage({ onSelectTree, onSignOut }: { onSelectTree: (id: string) 
         position: 'sticky', top: 0, zIndex: 100,
         boxShadow: '0 1px 20px rgba(99,102,241,0.08)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <FamilyTreeLogo size={40} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ width: 38, height: 38, borderRadius: 11, background: 'linear-gradient(135deg,#6366f1,#ec4899)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(99,102,241,0.4)', flexShrink: 0 }}>
+            <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="9" r="5" fill="white" opacity="0.95"/>
+              <line x1="24" y1="14" x2="24" y2="21" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="11" y1="21" x2="37" y2="21" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="11" y1="21" x2="11" y2="28" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="24" y1="21" x2="24" y2="28" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="37" y1="21" x2="37" y2="28" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
+              <circle cx="11" cy="33" r="4.5" fill="white" opacity="0.9"/>
+              <circle cx="24" cy="33" r="4.5" fill="white" opacity="0.9"/>
+              <circle cx="37" cy="33" r="4.5" fill="white" opacity="0.9"/>
+            </svg>
+          </div>
           <span style={{ fontWeight: 900, fontSize: 20, color: '#0f172a', letterSpacing: -0.5 }}>FamilyTree</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
@@ -359,37 +371,58 @@ function TreeListPage({ onSelectTree, onSignOut }: { onSelectTree: (id: string) 
         </div>
       </nav>
 
-      <main style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 32px' }}>
+      <main style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 32px' }}>
         {/* Hero */}
-        <div style={{ marginBottom: 48 }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+        <div style={{ marginBottom: 32 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '4px 14px', borderRadius: 20, background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.2)', marginBottom: 14 }}>
-                <span style={{ fontSize: 12 }}>🌿</span>
-                <span style={{ fontSize: 12, fontWeight: 700, color: '#6366f1', letterSpacing: 0.5 }}>YOUR FAMILY TREES</span>
-              </div>
-              <h1 style={{ fontSize: 38, fontWeight: 900, color: '#0f172a', margin: '0 0 10px', letterSpacing: -1 }}>My Family Trees</h1>
-              <p style={{ color: '#64748b', margin: 0, fontSize: 16 }}>Every branch tells a story — explore yours</p>
+              <h1 style={{ fontSize: 34, fontWeight: 900, color: '#0f172a', margin: '0 0 6px', letterSpacing: -1 }}>My Family Trees</h1>
+              <p style={{ color: '#64748b', margin: 0, fontSize: 15 }}>Every branch tells a story — explore yours</p>
             </div>
-            <PrimaryBtn label="New Tree" icon="＋" onClick={() => setShowCreate(true)} />
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              {/* Search */}
+              <div style={{ position: 'relative' }}>
+                <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', fontSize: 14, color: '#94a3b8' }}>🔍</span>
+                <input placeholder="Search trees..." style={{
+                  height: 40, paddingLeft: 36, paddingRight: 14, borderRadius: 10,
+                  border: '1.5px solid rgba(226,232,240,0.8)', background: 'white',
+                  fontSize: 13, outline: 'none', fontFamily: 'inherit', color: '#374151', width: 200,
+                }} onFocus={e => (e.target.style.borderColor = '#6366f1')} onBlur={e => (e.target.style.borderColor = 'rgba(226,232,240,0.8)')} />
+              </div>
+              {/* Filter */}
+              <select style={{ height: 40, padding: '0 12px', borderRadius: 10, border: '1.5px solid rgba(226,232,240,0.8)', background: 'white', fontSize: 13, color: '#374151', outline: 'none', fontFamily: 'inherit', cursor: 'pointer' }}>
+                <option>All Trees</option>
+                <option>🌐 Public</option>
+                <option>🔒 Private</option>
+                <option>👥 Shared</option>
+              </select>
+              <PrimaryBtn label="New Tree" icon="＋" onClick={() => setShowCreate(true)} />
+            </div>
           </div>
         </div>
 
         {/* Stats bar */}
-        <div style={{ display: 'flex', gap: 16, marginBottom: 36 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 14, marginBottom: 32 }}>
           {[
-            { icon: '🌳', label: 'Trees', value: MOCK_TREES.length },
-            { icon: '👥', label: 'People', value: MOCK_PEOPLE.length },
-            { icon: '🔗', label: 'Relationships', value: MOCK_RELATIONSHIPS.length },
-            { icon: '🌐', label: 'Public Trees', value: MOCK_TREES.filter(t => t.isPublic).length },
+            { icon: '🌳', label: 'Total Trees', value: MOCK_TREES.length, color: '#6366f1', bg: 'linear-gradient(135deg,#6366f1,#8b5cf6)' },
+            { icon: '👨‍👩‍👧‍👦', label: 'Family Members', value: MOCK_PEOPLE.length, color: '#ec4899', bg: 'linear-gradient(135deg,#ec4899,#f43f5e)' },
+            { icon: '🔗', label: 'Relationships', value: MOCK_RELATIONSHIPS.length, color: '#22c55e', bg: 'linear-gradient(135deg,#22c55e,#16a34a)' },
+            { icon: '🌐', label: 'Public Trees', value: MOCK_TREES.filter(t => t.isPublic).length, color: '#f59e0b', bg: 'linear-gradient(135deg,#f59e0b,#d97706)' },
           ].map(stat => (
-            <GlassCard key={stat.label} style={{ flex: 1, padding: '18px 22px', display: 'flex', alignItems: 'center', gap: 14 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 12, background: 'linear-gradient(135deg,#6366f1,#8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>{stat.icon}</div>
+            <div key={stat.label} style={{
+              background: 'white', borderRadius: 18, padding: '20px 22px',
+              border: '1px solid rgba(226,232,240,0.8)',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
+              display: 'flex', alignItems: 'center', gap: 16,
+              position: 'relative', overflow: 'hidden',
+            }}>
+              <div style={{ position: 'absolute', top: -16, right: -16, width: 80, height: 80, borderRadius: '50%', background: stat.color + '10' }} />
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: stat.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, boxShadow: `0 4px 12px ${stat.color}40`, flexShrink: 0 }}>{stat.icon}</div>
               <div>
-                <p style={{ fontSize: 26, fontWeight: 900, color: '#0f172a', margin: 0, lineHeight: 1 }}>{stat.value}</p>
-                <p style={{ fontSize: 12, color: '#94a3b8', margin: '3px 0 0', fontWeight: 600 }}>{stat.label}</p>
+                <p style={{ fontSize: 28, fontWeight: 900, color: '#0f172a', margin: 0, lineHeight: 1, letterSpacing: -1 }}>{stat.value}</p>
+                <p style={{ fontSize: 12, color: '#94a3b8', margin: '4px 0 0', fontWeight: 600, letterSpacing: 0.3 }}>{stat.label}</p>
               </div>
-            </GlassCard>
+            </div>
           ))}
         </div>
 
@@ -418,13 +451,14 @@ function TreeListPage({ onSelectTree, onSignOut }: { onSelectTree: (id: string) 
               {!accessible && (
                 <div style={{
                   position: 'absolute', inset: 0, borderRadius: 22,
-                  background: 'rgba(15,23,42,0.04)',
+                  background: 'rgba(255,255,255,0.75)',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  zIndex: 10, backdropFilter: 'blur(2px)',
+                  zIndex: 10, backdropFilter: 'blur(4px)', gap: 6,
                 }}>
-                  <div style={{ fontSize: 36, marginBottom: 8 }}>🔒</div>
-                  <p style={{ fontWeight: 800, color: '#ef4444', margin: '0 0 4px', fontSize: 15 }}>Private Tree</p>
-                  <p style={{ fontSize: 12, color: '#94a3b8', margin: 0 }}>You don't have access</p>
+                  <div style={{ width: 52, height: 52, borderRadius: 16, background: 'linear-gradient(135deg,#ef4444,#dc2626)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, boxShadow: '0 4px 14px rgba(239,68,68,0.3)' }}>🔒</div>
+                  <p style={{ fontWeight: 800, color: '#dc2626', margin: 0, fontSize: 14 }}>Private Tree</p>
+                  <p style={{ fontSize: 12, color: '#94a3b8', margin: 0, textAlign: 'center', padding: '0 16px' }}>You don't have access to this tree</p>
+                  <button style={{ marginTop: 4, padding: '6px 16px', borderRadius: 8, border: '1.5px solid rgba(239,68,68,0.3)', background: 'white', color: '#ef4444', fontSize: 12, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>Request Access</button>
                 </div>
               )}
 
