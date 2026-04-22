@@ -84,6 +84,21 @@ export function AuthPage() {
               {mode === 'login' ? 'Sign In' : 'Create Account'}
             </Button>
           </form>
+
+          <div className="flex items-center gap-4 my-6">
+            <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+            <span className="text-xs font-semibold text-slate-400">OR CONTINUE WITH</span>
+            <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
+          </div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {[['🔵', 'Google'], ['📸', 'Instagram'], ['⚫', 'X'], ['🔷', 'Facebook']].map(([icon, name]) => (
+              <button key={name as string} className="h-10 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-indigo-500 dark:hover:border-indigo-400 flex items-center justify-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 transition-colors">
+                <span>{icon}</span>
+                <span>{name}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
