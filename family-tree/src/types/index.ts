@@ -1,3 +1,10 @@
+export interface Profile {
+  id: string;
+  isPremium: boolean;
+  subscriptionTier: 'free' | 'family';
+  updatedAt: string;
+}
+
 export type RelationshipType = 'parent_child' | 'spouse' | 'sibling' | 'extramarital'
 export type ContributorRole = 'owner' | 'editor' | 'viewer'
 export type Gender = 'male' | 'female' | 'other'

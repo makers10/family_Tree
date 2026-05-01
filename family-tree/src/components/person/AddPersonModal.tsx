@@ -6,6 +6,9 @@ import { Select } from '@/components/ui/Select'
 import { Button } from '@/components/ui/Button'
 import { Avatar } from '@/components/ui/Avatar'
 import { usePeople } from '@/hooks/usePeople'
+import { useTreeStore } from '@/store/useTreeStore'
+import { useSubscription } from '@/hooks/useSubscription'
+import { UpgradeModal } from '@/components/ui/UpgradeModal'
 import { uploadToCloudinary, validateImageFile } from '@/lib/cloudinary'
 import { useToast } from '@/components/ui/Toast'
 import { Upload } from 'lucide-react'
@@ -18,6 +21,8 @@ interface AddPersonModalProps {
 
 export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
   const { createPerson } = usePeople(treeId)
+  const { people } = useTreeStore()
+  const { isPremium } = useSubscription()
   const { toast } = useToast()
   const fileRef = useRef<HTMLInputElement>(null)
 
@@ -29,6 +34,7 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
   const [photoFile, setPhotoFile] = useState<File | null>(null)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
+  const [showUpgrade, setShowUpgrade] = useState(false)
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -51,6 +57,13 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!validate()) return
+
+    // PAYWALL: Enforce 10 person limit for free users
+    if (!isPremium && people.length >= 10) {
+      setShowUpgrade(true)
+      return
+    }
+
     setSaving(true)
     try {
       let photoUrl: string | null = null
@@ -167,6 +180,7 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
           <Button type="submit" loading={saving}>Add Person</Button>
         </div>
       </form>
+      <UpgradeModal open={showUpgrade} onClose={() => setShowUpgrade(false)} reason="limit" />
     </Modal>
   )
 }
