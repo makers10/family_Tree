@@ -12,6 +12,10 @@ export interface Person {
   gender: Gender | null
   photoUrl: string | null
   cloudinaryPublicId: string | null
+  gotra: string | null
+  nakshatra: string | null
+  rashi: string | null
+  nativeVillage: string | null
   createdBy: string
   createdAt: string
   privacyLevel?: PrivacyLevel

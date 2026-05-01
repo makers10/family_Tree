@@ -135,6 +135,39 @@ export function PersonDetailPanel({ personId, onClose, treeId }: PersonDetailPan
               </div>
             )}
 
+            {/* Cultural Heritage */}
+            {(person.gotra || person.nakshatra || person.rashi || person.nativeVillage) && (
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">🪔 Cultural Heritage</p>
+                <div className="grid grid-cols-2 gap-2">
+                  {person.gotra && (
+                    <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-900/20">
+                      <p className="text-[10px] font-semibold text-amber-600 dark:text-amber-400 uppercase">Gotra</p>
+                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{person.gotra}</p>
+                    </div>
+                  )}
+                  {person.nativeVillage && (
+                    <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/20">
+                      <p className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase">Native Village</p>
+                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{person.nativeVillage}</p>
+                    </div>
+                  )}
+                  {person.nakshatra && (
+                    <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                      <p className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase">Nakshatra</p>
+                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{person.nakshatra}</p>
+                    </div>
+                  )}
+                  {person.rashi && (
+                    <div className="p-2 rounded-lg bg-purple-50 dark:bg-purple-900/20">
+                      <p className="text-[10px] font-semibold text-purple-600 dark:text-purple-400 uppercase">Rashi</p>
+                      <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{person.rashi}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Relationships */}
             {relatedPeople.length > 0 && (
               <div>

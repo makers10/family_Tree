@@ -13,6 +13,10 @@ function mapRow(row: Record<string, unknown>): Person {
     gender: (row.gender as Person['gender']) ?? null,
     photoUrl: (row.photo_url as string) ?? null,
     cloudinaryPublicId: (row.cloudinary_public_id as string) ?? null,
+    gotra: (row.gotra as string) ?? null,
+    nakshatra: (row.nakshatra as string) ?? null,
+    rashi: (row.rashi as string) ?? null,
+    nativeVillage: (row.native_village as string) ?? null,
     createdBy: row.created_by as string,
     createdAt: row.created_at as string,
   }
@@ -55,6 +59,10 @@ export function usePeople(treeId: string | undefined) {
         gender: input.gender,
         photo_url: input.photoUrl,
         cloudinary_public_id: input.cloudinaryPublicId,
+        gotra: input.gotra,
+        nakshatra: input.nakshatra,
+        rashi: input.rashi,
+        native_village: input.nativeVillage,
       })
       .select()
       .single()
@@ -76,6 +84,10 @@ export function usePeople(treeId: string | undefined) {
     if (input.gender !== undefined) payload.gender = input.gender
     if (input.photoUrl !== undefined) payload.photo_url = input.photoUrl
     if (input.cloudinaryPublicId !== undefined) payload.cloudinary_public_id = input.cloudinaryPublicId
+    if (input.gotra !== undefined) payload.gotra = input.gotra
+    if (input.nakshatra !== undefined) payload.nakshatra = input.nakshatra
+    if (input.rashi !== undefined) payload.rashi = input.rashi
+    if (input.nativeVillage !== undefined) payload.native_village = input.nativeVillage
 
     const { data, error } = await supabase
       .from('people')

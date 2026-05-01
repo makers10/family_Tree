@@ -23,6 +23,7 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
 
   const [form, setForm] = useState({
     fullName: '', birthDate: '', deathDate: '', bio: '', gender: '',
+    gotra: '', nakshatra: '', rashi: '', nativeVillage: '',
   })
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
   const [photoFile, setPhotoFile] = useState<File | null>(null)
@@ -67,10 +68,14 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
         gender: (form.gender as 'male' | 'female' | 'other') || null,
         photoUrl,
         cloudinaryPublicId,
+        gotra: form.gotra.trim() || null,
+        nakshatra: form.nakshatra.trim() || null,
+        rashi: form.rashi.trim() || null,
+        nativeVillage: form.nativeVillage.trim() || null,
       })
       toast('Person added successfully.')
       onClose()
-      setForm({ fullName: '', birthDate: '', deathDate: '', bio: '', gender: '' })
+      setForm({ fullName: '', birthDate: '', deathDate: '', bio: '', gender: '', gotra: '', nakshatra: '', rashi: '', nativeVillage: '' })
       setPhotoPreview(null)
       setPhotoFile(null)
     } catch (err) {
@@ -111,6 +116,51 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
 
         <Textarea id="bio" label="Bio" placeholder="A short biography..." rows={3} value={form.bio}
           onChange={(e) => setForm((f) => ({ ...f, bio: e.target.value }))} />
+
+        {/* Cultural Heritage — India-specific */}
+        <div className="border-t border-slate-100 dark:border-slate-700 pt-4 mt-1">
+          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">🪔 Cultural Heritage</p>
+          <div className="flex flex-col gap-3">
+            <div className="grid grid-cols-2 gap-3">
+              <Input id="gotra" label="Gotra" placeholder="e.g. Kashyap" value={form.gotra}
+                onChange={(e) => setForm((f) => ({ ...f, gotra: e.target.value }))} />
+              <Input id="nativeVillage" label="Native Village (Mool)" placeholder="e.g. Raipur" value={form.nativeVillage}
+                onChange={(e) => setForm((f) => ({ ...f, nativeVillage: e.target.value }))} />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <Select id="nakshatra" label="Nakshatra" value={form.nakshatra}
+                onChange={(e) => setForm((f) => ({ ...f, nakshatra: e.target.value }))}
+                options={[
+                  { value: '', label: 'Not specified' },
+                  { value: 'Ashwini', label: 'Ashwini' }, { value: 'Bharani', label: 'Bharani' },
+                  { value: 'Krittika', label: 'Krittika' }, { value: 'Rohini', label: 'Rohini' },
+                  { value: 'Mrigashira', label: 'Mrigashira' }, { value: 'Ardra', label: 'Ardra' },
+                  { value: 'Punarvasu', label: 'Punarvasu' }, { value: 'Pushya', label: 'Pushya' },
+                  { value: 'Ashlesha', label: 'Ashlesha' }, { value: 'Magha', label: 'Magha' },
+                  { value: 'Purva Phalguni', label: 'Purva Phalguni' }, { value: 'Uttara Phalguni', label: 'Uttara Phalguni' },
+                  { value: 'Hasta', label: 'Hasta' }, { value: 'Chitra', label: 'Chitra' },
+                  { value: 'Swati', label: 'Swati' }, { value: 'Vishakha', label: 'Vishakha' },
+                  { value: 'Anuradha', label: 'Anuradha' }, { value: 'Jyeshtha', label: 'Jyeshtha' },
+                  { value: 'Moola', label: 'Moola' }, { value: 'Purva Ashadha', label: 'Purva Ashadha' },
+                  { value: 'Uttara Ashadha', label: 'Uttara Ashadha' }, { value: 'Shravana', label: 'Shravana' },
+                  { value: 'Dhanishta', label: 'Dhanishta' }, { value: 'Shatabhisha', label: 'Shatabhisha' },
+                  { value: 'Purva Bhadrapada', label: 'Purva Bhadrapada' }, { value: 'Uttara Bhadrapada', label: 'Uttara Bhadrapada' },
+                  { value: 'Revati', label: 'Revati' },
+                ]} />
+              <Select id="rashi" label="Rashi (Zodiac)" value={form.rashi}
+                onChange={(e) => setForm((f) => ({ ...f, rashi: e.target.value }))}
+                options={[
+                  { value: '', label: 'Not specified' },
+                  { value: 'Mesha', label: 'Mesha (Aries)' }, { value: 'Vrishabha', label: 'Vrishabha (Taurus)' },
+                  { value: 'Mithuna', label: 'Mithuna (Gemini)' }, { value: 'Karka', label: 'Karka (Cancer)' },
+                  { value: 'Simha', label: 'Simha (Leo)' }, { value: 'Kanya', label: 'Kanya (Virgo)' },
+                  { value: 'Tula', label: 'Tula (Libra)' }, { value: 'Vrishchika', label: 'Vrishchika (Scorpio)' },
+                  { value: 'Dhanu', label: 'Dhanu (Sagittarius)' }, { value: 'Makara', label: 'Makara (Capricorn)' },
+                  { value: 'Kumbha', label: 'Kumbha (Aquarius)' }, { value: 'Meena', label: 'Meena (Pisces)' },
+                ]} />
+            </div>
+          </div>
+        </div>
 
         <div className="flex justify-end gap-2 pt-2">
           <Button type="button" variant="ghost" onClick={onClose}>Cancel</Button>
