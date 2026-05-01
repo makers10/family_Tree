@@ -208,17 +208,17 @@ export function LandingPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">{t('pricing.title')}</h2>
           <p className="text-slate-600 dark:text-slate-400">{t('pricing.subtitle')}</p>
         </div>
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 px-4">
-          {/* Free Tier */}
-          <div className="p-10 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.free.name')}</h3>
-            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.free.desc')}</p>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 px-4">
+          {/* Starter Tier */}
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.starter.name')}</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.starter.desc')}</p>
             <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.free.price')}</span>
-              <span className="text-slate-500 text-sm">{t('pricing.free.duration')}</span>
+              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.starter.price')}</span>
+              <span className="text-slate-500 text-sm">{t('pricing.starter.duration')}</span>
             </div>
             <ul className="space-y-4 mb-10">
-              {[t('pricing.free.feat1'), t('pricing.free.feat2'), t('pricing.free.feat3'), t('pricing.free.feat4')].map((feat, i) => (
+              {[t('pricing.starter.feat1'), t('pricing.starter.feat2'), t('pricing.starter.feat3'), t('pricing.starter.feat4')].map((feat, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <Check className="w-4 h-4 text-indigo-500" /> {feat}
                 </li>
@@ -228,27 +228,47 @@ export function LandingPage() {
               <Button variant="secondary" className="w-full rounded-xl">{t('pricing.getStarted')}</Button>
             </Link>
           </div>
-          
-          {/* Family Tier */}
-          <div className="p-10 rounded-3xl bg-white dark:bg-slate-800 border-2 border-indigo-500 shadow-xl relative overflow-hidden">
+
+          {/* Heritage Tier */}
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-800 border-2 border-indigo-500 shadow-xl relative overflow-hidden scale-105 z-10">
             <div className="absolute top-0 right-0 bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-bl-xl">
               Most Popular
             </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.family.name')}</h3>
-            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.family.desc')}</p>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.heritage.name')}</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.heritage.desc')}</p>
             <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.family.price')}</span>
-              <span className="text-slate-500 text-sm">{t('pricing.family.duration')}</span>
+              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.heritage.price')}</span>
+              <span className="text-slate-500 text-sm">{t('pricing.heritage.duration')}</span>
             </div>
             <ul className="space-y-4 mb-10">
-              {[t('pricing.family.feat1'), t('pricing.family.feat2'), t('pricing.family.feat3'), t('pricing.family.feat4'), t('pricing.family.feat5')].map((feat, i) => (
+              {[t('pricing.heritage.feat1'), t('pricing.heritage.feat2'), t('pricing.heritage.feat3'), t('pricing.heritage.feat4'), t('pricing.heritage.feat5')].map((feat, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <Check className="w-4 h-4 text-indigo-500" /> {feat}
                 </li>
               ))}
             </ul>
             <Link to="/login" className="block">
-              <Button className="w-full rounded-xl shadow-lg shadow-indigo-500/20">{t('pricing.upgrade')}</Button>
+              <Button className="w-full rounded-xl shadow-lg shadow-indigo-200 dark:shadow-none">{t('pricing.getStarted')}</Button>
+            </Link>
+          </div>
+          
+          {/* Legacy Tier */}
+          <div className="p-8 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.legacy.name')}</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.legacy.desc')}</p>
+            <div className="flex items-baseline gap-1 mb-8">
+              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.legacy.price')}</span>
+              <span className="text-slate-500 text-sm">{t('pricing.legacy.duration')}</span>
+            </div>
+            <ul className="space-y-4 mb-10">
+              {[t('pricing.legacy.feat1'), t('pricing.legacy.feat2'), t('pricing.legacy.feat3'), t('pricing.legacy.feat4'), t('pricing.legacy.feat5')].map((feat, i) => (
+                <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
+                  <Check className="w-4 h-4 text-indigo-500" /> {feat}
+                </li>
+              ))}
+            </ul>
+            <Link to="/login" className="block">
+              <Button variant="secondary" className="w-full rounded-xl">{t('pricing.getStarted')}</Button>
             </Link>
           </div>
         </div>

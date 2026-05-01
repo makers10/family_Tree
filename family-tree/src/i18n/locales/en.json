@@ -15,27 +15,38 @@
   },
   "pricing": {
     "title": "Simple, Transparent Pricing",
-    "subtitle": "Choose the plan that fits your family's needs.",
-    "free": {
-      "name": "Free",
-      "desc": "Perfect for individuals just starting out.",
-      "price": "₹0",
-      "duration": "/ forever",
+    "subtitle": "Preserve your family legacy with the right tools for your needs.",
+    "starter": {
+      "name": "Starter",
+      "desc": "Perfect for small families starting their journey.",
+      "price": "₹1",
+      "duration": "/ one-time",
       "feat1": "1 Family Tree",
       "feat2": "Up to 2 Generations",
       "feat3": "Basic View Only",
       "feat4": "Mobile Access"
     },
-    "family": {
-      "name": "Family",
-      "desc": "Best for entire family groups.",
-      "price": "₹149",
-      "duration": "/ month",
+    "heritage": {
+      "name": "Heritage",
+      "desc": "Deep dive into your roots and history.",
+      "price": "₹499",
+      "duration": "/ lifetime",
       "feat1": "3 Family Trees",
+      "feat2": "Up to 5 Generations",
+      "feat3": "Photo Uploads",
+      "feat4": "WhatsApp Invitations",
+      "feat5": "Priority Support"
+    },
+    "legacy": {
+      "name": "Legacy",
+      "desc": "The ultimate preservation for generations to come.",
+      "price": "₹999",
+      "duration": "/ lifetime",
+      "feat1": "Unlimited Trees",
       "feat2": "Unlimited Generations",
-      "feat3": "PDF & Image Export",
-      "feat4": "Photo Uploads",
-      "feat5": "WhatsApp Invitations"
+      "feat3": "PDF & High-Res Exports",
+      "feat4": "Premium Relationships",
+      "feat5": "Early Access to Features"
     },
     "upgrade": "Upgrade Now",
     "getStarted": "Get Started"
