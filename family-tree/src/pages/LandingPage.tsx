@@ -6,7 +6,6 @@ import {
   Share2, 
   MapPin, 
   Sparkles,
-  ChevronRight,
   ArrowRight,
   Check
 } from 'lucide-react'

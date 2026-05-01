@@ -8,9 +8,10 @@ import { FamilyTreeCanvas } from '@/components/tree/FamilyTreeCanvas'
 import { PersonDetailPanel } from '@/components/person/PersonDetailPanel'
 import { AddPersonModal } from '@/components/person/AddPersonModal'
 import { AddRelationshipModal } from '@/components/relationship/AddRelationshipModal'
+import { InviteModal } from '@/components/tree/InviteModal'
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
-import { ArrowLeft, UserPlus, Link2, Share2, Trees, Moon, Sun } from 'lucide-react'
+import { ArrowLeft, UserPlus, Link2, Share2, Trees, Moon, Sun, UserCheck } from 'lucide-react'
 
 export function TreePage() {
   const { treeId } = useParams<{ treeId: string }>()
@@ -28,6 +29,7 @@ export function TreePage() {
   const [selectedPersonId, setSelectedPersonId] = useState<string | null>(null)
   const [showAddPerson, setShowAddPerson] = useState(false)
   const [showAddRel, setShowAddRel] = useState(false)
+  const [showInvite, setShowInvite] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
 
   function toggleDark() {
@@ -70,11 +72,14 @@ export function TreePage() {
         </div>
 
         <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={() => setShowInvite(true)} className="hidden sm:flex border-emerald-200 dark:border-emerald-900/30 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-900/20">
+            <UserCheck size={14} className="mr-1" /> Invite
+          </Button>
           <Button variant="secondary" size="sm" onClick={() => setShowAddRel(true)} disabled={people.length < 2}>
-            <Link2 size={14} /> Relationship
+            <Link2 size={14} /> <span className="hidden sm:inline">Relationship</span>
           </Button>
           <Button size="sm" onClick={() => setShowAddPerson(true)}>
-            <UserPlus size={14} /> Add Person
+            <UserPlus size={14} /> <span className="hidden sm:inline">Add Person</span>
           </Button>
           <Button variant="ghost" size="sm" onClick={handleShare}>
             <Share2 size={14} />
@@ -124,6 +129,14 @@ export function TreePage() {
       {/* Modals */}
       <AddPersonModal open={showAddPerson} onClose={() => setShowAddPerson(false)} treeId={treeId} />
       <AddRelationshipModal open={showAddRel} onClose={() => setShowAddRel(false)} treeId={treeId} />
+      {tree && (
+        <InviteModal 
+          open={showInvite} 
+          onClose={() => setShowInvite(false)} 
+          treeName={tree.name} 
+          inviteToken={tree.inviteToken} 
+        />
+      )}
     </div>
   )
 }

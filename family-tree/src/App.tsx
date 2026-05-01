@@ -6,6 +6,7 @@ import { AuthPage } from '@/pages/AuthPage'
 import { TreeListPage } from '@/pages/TreeListPage'
 import { TreePage } from '@/pages/TreePage'
 import { LandingPage } from '@/pages/LandingPage'
+import { JoinTreePage } from '@/pages/JoinTreePage'
 import { useAuthListener } from '@/hooks/useAuth'
 
 function AppRoutes() {
@@ -13,6 +14,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/join/:token" element={<JoinTreePage />} />
       <Route path="/login" element={<AuthPage />} />
       <Route path="/register" element={<AuthPage />} />
       <Route path="/trees" element={<ProtectedRoute><TreeListPage /></ProtectedRoute>} />

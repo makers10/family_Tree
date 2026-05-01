@@ -8,6 +8,7 @@ function mapRow(row: Record<string, unknown>): FamilyTree {
     name: row.name as string,
     ownerId: row.owner_id as string,
     isPublic: row.is_public as boolean,
+    inviteToken: row.invite_token as string,
     createdAt: row.created_at as string,
   }
 }

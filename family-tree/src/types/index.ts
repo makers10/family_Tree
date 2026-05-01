@@ -26,6 +26,7 @@ export interface FamilyTree {
   name: string
   ownerId: string
   isPublic: boolean
+  inviteToken: string
   createdAt: string
   privacyLevel?: PrivacyLevel
   allowedViewers?: string[]

@@ -33,7 +33,13 @@ export function AuthPage() {
         toast('Account created! Check your email to confirm.')
       } else {
         await signIn(email, password)
-        navigate('/trees')
+        const params = new URLSearchParams(window.location.search)
+        const joinToken = params.get('join')
+        if (joinToken) {
+          navigate(`/join/${joinToken}`)
+        } else {
+          navigate('/trees')
+        }
       }
     } catch (err) {
       toast(err instanceof Error ? err.message : 'Authentication failed.', 'error')

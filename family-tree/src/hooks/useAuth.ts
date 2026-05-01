@@ -26,6 +26,11 @@ export function useAuthListener() {
   }, [setUser, setSession, setLoading])
 }
 
+export function useAuth() {
+  const { user, loading, session } = useAuthStore()
+  return { user, loading, session }
+}
+
 export async function signUp(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({ email, password })
   if (error) throw error

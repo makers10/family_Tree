@@ -1,9 +1,9 @@
 import type { Person, FamilyTree, Relationship } from '@/types'
 
 export const MOCK_TREES: FamilyTree[] = [
-  { id: 'tree-1', name: 'The Smith Family', ownerId: 'user-1', isPublic: false, createdAt: '2024-01-01', privacyLevel: 'private' },
-  { id: 'tree-2', name: 'The Johnson Family', ownerId: 'user-1', isPublic: true, createdAt: '2024-02-01', privacyLevel: 'public' },
-  { id: 'tree-3', name: 'The Williams Family', ownerId: 'user-2', isPublic: false, createdAt: '2024-03-01', privacyLevel: 'contributors_only' },
+  { id: 't1', name: 'Smith Family', ownerId: 'user-1', isPublic: false, inviteToken: 't1-token', createdAt: '2024-01-01' },
+  { id: 't2', name: 'Jones Family', ownerId: 'user-1', isPublic: true, inviteToken: 't2-token', createdAt: '2024-01-02' },
+  { id: 't3', name: 'Public Archive', ownerId: 'user-1', isPublic: false, inviteToken: 't3-token', createdAt: '2024-01-03' },
 ]
 
 export const MOCK_PEOPLE: Person[] = [
