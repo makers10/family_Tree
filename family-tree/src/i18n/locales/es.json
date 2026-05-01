@@ -52,5 +52,102 @@
     "spouse": "Cónyuge",
     "sibling": "Hermano/a",
     "extramarital": "Extramatrimonial"
+  },
+  "heritage": {
+    "title": "Profundamente arraigado en la herencia india",
+    "subtitle": "Las herramientas tradicionales no entienden nuestra cultura. Construimos Vanshavali con características que realmente importan a las familias indias.",
+    "feat1": {
+      "title": "Seguimiento de Gotra y Kul",
+      "desc": "Preserve su linaje de acuerdo con las tradiciones de su comunidad (Rajput, Brahmin, Jain, etc.)."
+    },
+    "feat2": {
+      "title": "Pueblo Nativo (Mool)",
+      "desc": "Nunca pierda la conexión con su pueblo ancestral y sus raíces en Bharat."
+    },
+    "feat3": {
+      "title": "Soporte para familias conjuntas",
+      "desc": "Visualice estructuras familiares conjuntas complejas con facilidad, desde los ancestros hasta la rama más reciente."
+    }
+  },
+  "features": {
+    "title": "Potentes herramientas para su historia familiar",
+    "subtitle": "Vanshavali proporciona un lienzo sofisticado donde puede mapear relaciones, subir fotos antiguas y registrar las historias de sus antepasados. Es más que un árbol; es un archivo vivo.",
+    "list1": "Generaciones y miembros ilimitados",
+    "list2": "Seguimiento de astrología Nakshatra y Rashi",
+    "list3": "Diseño automático con el algoritmo Dagre",
+    "list4": "Diseño centrado en el móvil para todos los familiares",
+    "card1": { "title": "Privado y Seguro", "desc": "Tus datos son tuyos. Tú eliges quién ve los secretos de tu familia." },
+    "card2": { "title": "Compartir vía WhatsApp", "desc": "Invita a tus familiares a añadir sus ramas con un solo clic." },
+    "card3": { "title": "Exportaciones de alta resolución", "desc": "Descarga tu árbol como un hermoso PDF para imprimir y enmarcar." },
+    "card4": { "title": "Edición en tiempo real", "desc": "Colabora con hermanos y padres para construir el panorama completo." }
+  },
+  "security": {
+    "title": "Tus secretos familiares están seguros con nosotros",
+    "item1": { "title": "Sin venta de datos", "desc": "A diferencia de las redes sociales, nunca vendemos los datos o fotos de tu familia a anunciantes." },
+    "item2": { "title": "Privado por defecto", "desc": "Tu árbol solo es visible para ti y para los familiares que invites explícitamente." },
+    "item3": { "title": "Almacenamiento cifrado", "desc": "Todas tus fotos y registros se almacenan con cifrado de grado empresarial." }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "q1": { "q": "¿Es realmente gratis para 2 generaciones?", "a": "Sí, puedes construir un árbol completo con hasta 2 generaciones sin pagar un solo rupia. No se requiere tarjeta de crédito." },
+    "q2": { "q": "¿Puedo descargar mi árbol para imprimir?", "a": "¡Absolutamente! El Plan Familiar te permite exportar PDFs e imágenes de alta resolución listos para enmarcado profesional." },
+    "q3": { "q": "¿Cómo invito a mis familiares?", "a": "Simplemente haz clic en 'Invitar' en la página de tu árbol para obtener un enlace especial de WhatsApp. Cualquier persona con el enlace puede unirse y contribuir." },
+    "q4": { "q": "¿Están mis datos seguros si borro mi cuenta?", "a": "Sí, respetamos tu privacidad. Cuando eliminas tu cuenta, todos tus datos, relaciones y fotos se borran permanentemente." },
+    "q5": { "q": "¿Puedo usarlo en español u otros idiomas?", "a": "¡Sí! Toda nuestra interfaz está disponible en 9 idiomas, incluidos español, hindi, sánscrito y más." }
+  },
+  "blog": {
+    "title": "Recursos de Historia Familiar",
+    "subtitle": "Aprende a rastrear tus raíces y preservar tus historias familiares con nuestras guías expertas.",
+    "viewAll": "Ver todos los artículos",
+    "post1": { "title": "Cómo rastrear tu Gotra", "desc": "Una guía para principiantes para entender tu linaje y encontrar tus raíces ancestrales en Bharat." },
+    "post2": { "title": "Digitalizar fotos familiares antiguas", "desc": "Aprende las mejores formas de escanear y preservar las preciosas fotos antiguas de tu abuelo." },
+    "post3": { "title": "La magia de las familias conjuntas", "desc": "Por qué construir un árbol familiar es la mejor manera de mantener conectados a tus primos y parientes." }
+  },
+  "cta": {
+    "title": "Comienza a preservar tu historia familiar hoy",
+    "subtitle": "Únete a miles de familias indias que están digitalizando su linaje. Es gratis para empezar y toma menos de un minuto.",
+    "button": "Empieza gratis"
+  },
+  "footer": {
+    "copy": "© 2025 Vanshavali. Construido para la familia india moderna.",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto"
+  },
+  "auth": {
+    "title": "Vanshavali",
+    "subtitle": "Construye tu legado familiar",
+    "google": "Continuar con Google",
+    "googleLoading": "Iniciando sesión...",
+    "or": "O USA TU CORREO ELECTRÓNICO",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "createAccount": "Crear cuenta",
+    "emailError": "Ingresa un correo electrónico válido.",
+    "passError": "La contraseña debe tener al menos 8 caracteres.",
+    "success": "¡Cuenta creada! Revisa tu correo para confirmar.",
+    "fail": "Autenticación fallida.",
+    "googleFail": "Error al iniciar sesión con Google."
+  },
+  "list": {
+    "signOut": "Cerrar sesión",
+    "title": "Mis Árboles Genealógicos",
+    "subtitle": "Gestiona y explora tus historias familiares",
+    "newTree": "Nuevo Árbol",
+    "noTrees": "Aún no hay árboles. Crea el primero.",
+    "deleteConfirm": "¿Eliminar \"{{name}}\"? Esto no se puede deshacer.",
+    "public": "Público",
+    "private": "Privado",
+    "modalTitle": "Crear Nuevo Árbol",
+    "treeName": "Nombre del Árbol",
+    "placeholder": "ej. La Familia Sharma",
+    "cancel": "Cancelar",
+    "create": "Crear",
+    "created": "Árbol creado.",
+    "deleted": "Árbol eliminado.",
+    "createFail": "Error al crear el árbol.",
+    "deleteFail": "Error al eliminar el árbol."
   }
 }
