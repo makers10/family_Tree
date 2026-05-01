@@ -158,23 +158,23 @@ export function LandingPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="p-6 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800/30">
                 <Shield className="w-8 h-8 text-indigo-600 mb-4" />
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Private & Secure</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Your data is yours. Choose who sees your family secrets.</p>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('features.card1.title')}</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{t('features.card1.desc')}</p>
               </div>
               <div className="p-6 rounded-2xl bg-pink-50 dark:bg-pink-900/20 border border-pink-100 dark:border-pink-800/30 mt-8">
                 <Share2 className="w-8 h-8 text-pink-600 mb-4" />
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Share via WhatsApp</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Invite relatives to add their branches with one click.</p>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('features.card2.title')}</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{t('features.card2.desc')}</p>
               </div>
               <div className="p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/30">
                 <Download className="w-8 h-8 text-emerald-600 mb-4" />
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">High-Res Exports</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Download your tree as a beautiful PDF to print and frame.</p>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('features.card3.title')}</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{t('features.card3.desc')}</p>
               </div>
               <div className="p-6 rounded-2xl bg-amber-50 dark:bg-amber-900/20 border border-amber-100 dark:border-amber-800/30 mt-8">
                 <Users className="w-8 h-8 text-amber-600 mb-4" />
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Real-time Editing</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Collaborate with siblings and parents to build the full picture.</p>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('features.card4.title')}</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{t('features.card4.desc')}</p>
               </div>
             </div>
           </div>
@@ -261,12 +261,12 @@ export function LandingPage() {
             <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-6">
               <Shield className="w-6 h-6 text-emerald-600" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Your Family Secrets are <span className="text-emerald-600">Safe with Us</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">{t('security.title').split('Safe with Us')[0]}<span className="text-emerald-600">Safe with Us</span>{t('security.title').split('Safe with Us')[1]}</h2>
             <div className="space-y-6">
               {[
-                { title: "No Data Selling", desc: "Unlike social media, we never sell your family's data or photos to advertisers." },
-                { title: "Private by Default", desc: "Your tree is only visible to you and the relatives you explicitly invite." },
-                { title: "Encrypted Storage", desc: "All your photos and records are stored with enterprise-grade encryption." }
+                { title: t('security.item1.title'), desc: t('security.item1.desc') },
+                { title: t('security.item2.title'), desc: t('security.item2.desc') },
+                { title: t('security.item3.title'), desc: t('security.item3.desc') }
               ].map((item, i) => (
                 <div key={i} className="flex gap-4">
                   <div className="w-1 h-auto bg-emerald-500 rounded-full" />
@@ -279,14 +279,14 @@ export function LandingPage() {
             </div>
           </div>
           <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">{t('faq.title')}</h3>
             <div className="space-y-3">
               {[
-                { q: "Is it really free for 10 members?", a: "Yes, you can build a complete small tree with up to 10 members without paying a single rupee. No credit card required." },
-                { q: "Can I download my tree to print?", a: "Absolutely! The Family Plan allows you to export high-resolution PDFs and images ready for professional framing." },
-                { q: "How do I invite my relatives?", a: "Just click 'Invite' on your tree page to get a special WhatsApp link. Anyone with the link can join and contribute." },
-                { q: "Is my data safe if I delete my account?", a: "Yes, we respect your privacy. When you delete your account, all your data, relationships, and photos are permanently erased." },
-                { q: "Can I use it in Hindi or other languages?", a: "You can type names and bios in any Indian language. Our interface is currently in English, with more languages coming soon." }
+                { q: t('faq.q1.q'), a: t('faq.q1.a') },
+                { q: t('faq.q2.q'), a: t('faq.q2.a') },
+                { q: t('faq.q3.q'), a: t('faq.q3.a') },
+                { q: t('faq.q4.q'), a: t('faq.q4.a') },
+                { q: t('faq.q5.q'), a: t('faq.q5.a') }
               ].map((faq, i) => (
                 <FAQItem key={i} question={faq.q} answer={faq.a} />
               ))}
@@ -300,33 +300,33 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div className="max-w-2xl">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Family History <span className="text-pink-600">Resources</span></h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">{t('blog.title').split('Resources')[0]}<span className="text-pink-600">Resources</span>{t('blog.title').split('Resources')[1]}</h2>
               <p className="text-slate-600 dark:text-slate-400">
-                Learn how to trace your roots and preserve your family stories with our expert guides.
+                {t('blog.subtitle')}
               </p>
             </div>
             <Button variant="ghost" className="text-indigo-600 group">
-              View all articles <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {t('blog.viewAll')} <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { 
-                title: "How to Trace Your Gotra", 
-                desc: "A beginner's guide to understanding your lineage and finding your ancestral roots in Bharat.",
+                title: t('blog.post1.title'), 
+                desc: t('blog.post1.desc'),
                 tag: "Heritage",
                 date: "5 min read"
               },
               { 
-                title: "Digitizing Old Family Photos", 
-                desc: "Learn the best ways to scan and preserve your grandfather's precious old photographs.",
+                title: t('blog.post2.title'), 
+                desc: t('blog.post2.desc'),
                 tag: "Tutorial",
                 date: "8 min read"
               },
               { 
-                title: "The Magic of Joint Families", 
-                desc: "Why building a family tree is the best way to keep your cousins and relatives connected.",
+                title: t('blog.post3.title'), 
+                desc: t('blog.post3.desc'),
                 tag: "Culture",
                 date: "4 min read"
               }
@@ -362,13 +362,13 @@ export function LandingPage() {
           <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-pink-500/20 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl" />
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Start Preserving Your <br />Family History Today</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">{t('cta.title')}</h2>
             <p className="text-indigo-100 text-lg mb-10 max-w-2xl mx-auto">
-              Join thousands of Indian families who are digitizing their lineage. It's free to start and takes less than a minute.
+              {t('cta.subtitle')}
             </p>
             <Link to="/login">
               <Button size="lg" variant="secondary" className="rounded-full px-10 h-14 text-lg bg-white text-indigo-600 hover:bg-slate-50 border-none">
-                Get Started for Free
+                {t('cta.button')}
               </Button>
             </Link>
           </div>
@@ -385,12 +385,12 @@ export function LandingPage() {
             <span className="font-bold text-slate-900 dark:text-white">Vanshavali</span>
           </div>
           <p className="text-sm text-slate-500 dark:text-slate-400">
-            © 2025 Vanshavali. Built for the modern Indian family.
+            {t('footer.copy')}
           </p>
           <div className="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
-            <a href="#" className="hover:text-indigo-600">Privacy</a>
-            <a href="#" className="hover:text-indigo-600">Terms</a>
-            <a href="#" className="hover:text-indigo-600">Contact</a>
+            <a href="#" className="hover:text-indigo-600">{t('footer.privacy')}</a>
+            <a href="#" className="hover:text-indigo-600">{t('footer.terms')}</a>
+            <a href="#" className="hover:text-indigo-600">{t('footer.contact')}</a>
           </div>
         </div>
       </footer>

@@ -10,6 +10,7 @@ import mr from './locales/mr.json'
 import bn from './locales/bn.json'
 import zh from './locales/zh.json'
 import es from './locales/es.json'
+import sa from './locales/sa.json'
 
 i18n
   .use(LanguageDetector)
@@ -24,6 +25,7 @@ i18n
       bn: { translation: bn },
       zh: { translation: zh },
       es: { translation: es },
+      sa: { translation: sa },
     },
     fallbackLng: 'en',
     interpolation: {

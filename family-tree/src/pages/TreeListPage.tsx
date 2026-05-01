@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Modal } from '@/components/ui/Modal'
 import { useToast } from '@/components/ui/Toast'
+import { useTranslation } from 'react-i18next'
 import { Plus, Trees, LogOut, Globe, Lock, Trash2 } from 'lucide-react'
 
 export function TreeListPage() {
@@ -14,6 +15,7 @@ export function TreeListPage() {
   const { user } = useAuthStore()
   const navigate = useNavigate()
   const { toast } = useToast()
+  const { t } = useTranslation()
   const [showCreate, setShowCreate] = useState(false)
   const [newName, setNewName] = useState('')
   const [creating, setCreating] = useState(false)
@@ -24,24 +26,24 @@ export function TreeListPage() {
     setCreating(true)
     try {
       const tree = await createTree(newName.trim())
-      toast('Tree created.')
+      toast(t('list.created'))
       setShowCreate(false)
       setNewName('')
       navigate(`/trees/${tree.id}`)
     } catch (err) {
-      toast(err instanceof Error ? err.message : 'Failed to create tree.', 'error')
+      toast(err instanceof Error ? err.message : t('list.createFail'), 'error')
     } finally {
       setCreating(false)
     }
   }
 
   async function handleDelete(id: string, name: string) {
-    if (!confirm(`Delete "${name}"? This cannot be undone.`)) return
+    if (!confirm(t('list.deleteConfirm', { name }))) return
     try {
       await deleteTree(id)
-      toast('Tree deleted.')
+      toast(t('list.deleted'))
     } catch {
-      toast('Failed to delete tree.', 'error')
+      toast(t('list.deleteFail'), 'error')
     }
   }
 
@@ -63,7 +65,7 @@ export function TreeListPage() {
         <div className="flex items-center gap-3">
           <span className="text-sm text-slate-500 dark:text-slate-400">{user?.email}</span>
           <Button variant="ghost" size="sm" onClick={handleSignOut}>
-            <LogOut size={14} /> Sign Out
+            <LogOut size={14} /> {t('list.signOut')}
           </Button>
         </div>
       </nav>
@@ -71,11 +73,11 @@ export function TreeListPage() {
       <main className="max-w-4xl mx-auto px-6 py-10">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">My Family Trees</h1>
-            <p className="text-slate-500 dark:text-slate-400 mt-1">Manage and explore your family histories</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">{t('list.title')}</h1>
+            <p className="text-slate-500 dark:text-slate-400 mt-1">{t('list.subtitle')}</p>
           </div>
           <Button onClick={() => setShowCreate(true)}>
-            <Plus size={16} /> New Tree
+            <Plus size={16} /> {t('list.newTree')}
           </Button>
         </div>
 
@@ -90,7 +92,7 @@ export function TreeListPage() {
             <div className="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-4">
               <Trees size={32} className="text-slate-300 dark:text-slate-600" />
             </div>
-            <p className="text-slate-500 dark:text-slate-400">No trees yet. Create your first one.</p>
+            <p className="text-slate-500 dark:text-slate-400">{t('list.noTrees')}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -117,7 +119,7 @@ export function TreeListPage() {
                 <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-1">{tree.name}</h3>
                 <div className="flex items-center gap-1 text-xs text-slate-400">
                   {tree.isPublic ? <Globe size={12} /> : <Lock size={12} />}
-                  <span>{tree.isPublic ? 'Public' : 'Private'}</span>
+                  <span>{tree.isPublic ? t('list.public') : t('list.private')}</span>
                   <span className="mx-1">·</span>
                   <span>{new Date(tree.createdAt).toLocaleDateString()}</span>
                 </div>
@@ -127,13 +129,13 @@ export function TreeListPage() {
         )}
       </main>
 
-      <Modal open={showCreate} onClose={() => setShowCreate(false)} title="Create New Tree">
+       <Modal open={showCreate} onClose={() => setShowCreate(false)} title={t('list.modalTitle')}>
         <form onSubmit={handleCreate} className="flex flex-col gap-4">
-          <Input id="treeName" label="Tree Name" placeholder="e.g. The Smith Family" value={newName}
+          <Input id="treeName" label={t('list.treeName')} placeholder={t('list.placeholder')} value={newName}
             onChange={(e) => setNewName(e.target.value)} autoFocus />
           <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" onClick={() => setShowCreate(false)}>Cancel</Button>
-            <Button type="submit" loading={creating}>Create</Button>
+            <Button type="button" variant="ghost" onClick={() => setShowCreate(false)}>{t('list.cancel')}</Button>
+            <Button type="submit" loading={creating}>{t('list.create')}</Button>
           </div>
         </form>
       </Modal>

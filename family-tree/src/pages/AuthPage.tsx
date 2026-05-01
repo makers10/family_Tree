@@ -4,6 +4,8 @@ import { signIn, signUp, signInWithGoogle } from '@/hooks/useAuth'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
+import { useTranslation } from 'react-i18next'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 
 export function AuthPage() {
   const [mode, setMode] = useState<'login' | 'register'>('login')
@@ -14,11 +16,12 @@ export function AuthPage() {
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({})
   const navigate = useNavigate()
   const { toast } = useToast()
+  const { t } = useTranslation()
 
   function validate() {
     const errs: typeof errors = {}
-    if (!email.includes('@')) errs.email = 'Enter a valid email.'
-    if (password.length < 8) errs.password = 'Password must be at least 8 characters.'
+    if (!email.includes('@')) errs.email = t('auth.emailError')
+    if (password.length < 8) errs.password = t('auth.passError')
     setErrors(errs)
     return Object.keys(errs).length === 0
   }
@@ -30,7 +33,7 @@ export function AuthPage() {
     try {
       if (mode === 'register') {
         await signUp(email, password)
-        toast('Account created! Check your email to confirm.')
+        toast(t('auth.success'))
       } else {
         await signIn(email, password)
         const params = new URLSearchParams(window.location.search)
@@ -42,7 +45,7 @@ export function AuthPage() {
         }
       }
     } catch (err) {
-      toast(err instanceof Error ? err.message : 'Authentication failed.', 'error')
+      toast(err instanceof Error ? err.message : t('auth.fail'), 'error')
     } finally {
       setLoading(false)
     }
@@ -53,7 +56,7 @@ export function AuthPage() {
     try {
       await signInWithGoogle()
     } catch (err) {
-      toast(err instanceof Error ? err.message : 'Google sign-in failed.', 'error')
+      toast(err instanceof Error ? err.message : t('auth.googleFail'), 'error')
       setGoogleLoading(false)
     }
   }
@@ -63,14 +66,17 @@ export function AuthPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
+          <div className="absolute top-4 right-4">
+            <LanguageSwitcher />
+          </div>
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-pink-500 shadow-lg mb-4">
             <svg viewBox="0 0 24 24" className="w-8 h-8 text-white" fill="none" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1M4.22 4.22l.707.707m12.728 12.728.707.707M1 12h1m20 0h1M4.22 19.78l.707-.707M18.95 5.05l.707-.707" />
               <circle cx="12" cy="12" r="4" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Family Tree</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1">Build your family legacy</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{t('auth.title')}</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">{t('auth.subtitle')}</p>
         </div>
 
         {/* Card */}
@@ -91,12 +97,12 @@ export function AuthPage() {
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
             )}
-            {googleLoading ? 'Signing in...' : 'Continue with Google'}
+            {googleLoading ? t('auth.googleLoading') : t('auth.google')}
           </button>
 
           <div className="flex items-center gap-4 mb-6">
             <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
-            <span className="text-xs font-semibold text-slate-400">OR USE EMAIL</span>
+            <span className="text-xs font-semibold text-slate-400 uppercase">{t('auth.or')}</span>
             <div className="flex-1 h-px bg-slate-200 dark:bg-slate-700" />
           </div>
 
@@ -112,18 +118,18 @@ export function AuthPage() {
                     : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
                 }`}
               >
-                {m === 'login' ? 'Sign In' : 'Register'}
+                {m === 'login' ? t('auth.login') : t('auth.register')}
               </button>
             ))}
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <Input id="email" label="Email" type="email" placeholder="you@example.com"
+            <Input id="email" label={t('auth.email')} type="email" placeholder="you@example.com"
               value={email} onChange={(e) => setEmail(e.target.value)} error={errors.email} autoComplete="email" />
-            <Input id="password" label="Password" type="password" placeholder="••••••••"
+            <Input id="password" label={t('auth.password')} type="password" placeholder="••••••••"
               value={password} onChange={(e) => setPassword(e.target.value)} error={errors.password} autoComplete={mode === 'login' ? 'current-password' : 'new-password'} />
             <Button type="submit" loading={loading} className="w-full mt-2" size="lg">
-              {mode === 'login' ? 'Sign In' : 'Create Account'}
+              {mode === 'login' ? t('auth.login') : t('auth.createAccount')}
             </Button>
           </form>
         </div>

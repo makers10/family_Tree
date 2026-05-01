@@ -11,6 +11,7 @@ const LANGUAGES = [
   { code: 'bn', name: 'বাংলা' },
   { code: 'zh', name: '中文' },
   { code: 'es', name: 'Español' },
+  { code: 'sa', name: 'संस्कृतम्' },
 ]
 
 export function LanguageSwitcher() {

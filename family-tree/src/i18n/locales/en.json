@@ -75,6 +75,79 @@
     "list1": "Unlimited generations and members",
     "list2": "Nakshatra and Rashi astrology tracking",
     "list3": "Automatic layout with Dagre algorithm",
-    "list4": "Mobile-first design for all relatives"
+    "list4": "Mobile-first design for all relatives",
+    "card1": { "title": "Private & Secure", "desc": "Your data is yours. Choose who sees your family secrets." },
+    "card2": { "title": "Share via WhatsApp", "desc": "Invite relatives to add their branches with one click." },
+    "card3": { "title": "High-Res Exports", "desc": "Download your tree as a beautiful PDF to print and frame." },
+    "card4": { "title": "Real-time Editing", "desc": "Collaborate with siblings and parents to build the full picture." }
+  },
+  "security": {
+    "title": "Your Family Secrets are Safe with Us",
+    "item1": { "title": "No Data Selling", "desc": "Unlike social media, we never sell your family's data or photos to advertisers." },
+    "item2": { "title": "Private by Default", "desc": "Your tree is only visible to you and the relatives you explicitly invite." },
+    "item3": { "title": "Encrypted Storage", "desc": "All your photos and records are stored with enterprise-grade encryption." }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": { "q": "Is it really free for 2 generations?", "a": "Yes, you can build a complete tree with up to 2 generations without paying a single rupee. No credit card required." },
+    "q2": { "q": "Can I download my tree to print?", "a": "Absolutely! The Family Plan allows you to export high-resolution PDFs and images ready for professional framing." },
+    "q3": { "q": "How do I invite my relatives?", "a": "Just click 'Invite' on your tree page to get a special WhatsApp link. Anyone with the link can join and contribute." },
+    "q4": { "q": "Is my data safe if I delete my account?", "a": "Yes, we respect your privacy. When you delete your account, all your data, relationships, and photos are permanently erased." },
+    "q5": { "q": "Can I use it in Hindi or other languages?", "a": "Yes! Our entire interface is available in 9 languages including Hindi, Sanskrit, Tamil, and more." }
+  },
+  "blog": {
+    "title": "Family History Resources",
+    "subtitle": "Learn how to trace your roots and preserve your family stories with our expert guides.",
+    "viewAll": "View all articles",
+    "post1": { "title": "How to Trace Your Gotra", "desc": "A beginner's guide to understanding your lineage and finding your ancestral roots in Bharat." },
+    "post2": { "title": "Digitizing Old Family Photos", "desc": "Learn the best ways to scan and preserve your grandfather's precious old photographs." },
+    "post3": { "title": "The Magic of Joint Families", "desc": "Why building a family tree is the best way to keep your cousins and relatives connected." }
+  },
+  "cta": {
+    "title": "Start Preserving Your Family History Today",
+    "subtitle": "Join thousands of Indian families who are digitizing their lineage. It's free to start and takes less than a minute.",
+    "button": "Get Started for Free"
+  },
+  "footer": {
+    "copy": "© 2025 Vanshavali. Built for the modern Indian family.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  },
+  "auth": {
+    "title": "Family Tree",
+    "subtitle": "Build your family legacy",
+    "google": "Continue with Google",
+    "googleLoading": "Signing in...",
+    "or": "OR USE EMAIL",
+    "login": "Sign In",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "createAccount": "Create Account",
+    "emailError": "Enter a valid email.",
+    "passError": "Password must be at least 8 characters.",
+    "success": "Account created! Check your email to confirm.",
+    "fail": "Authentication failed.",
+    "googleFail": "Google sign-in failed."
+  },
+  "list": {
+    "signOut": "Sign Out",
+    "title": "My Family Trees",
+    "subtitle": "Manage and explore your family histories",
+    "newTree": "New Tree",
+    "noTrees": "No trees yet. Create your first one.",
+    "deleteConfirm": "Delete \"{{name}}\"? This cannot be undone.",
+    "public": "Public",
+    "private": "Private",
+    "modalTitle": "Create New Tree",
+    "treeName": "Tree Name",
+    "placeholder": "e.g. The Smith Family",
+    "cancel": "Cancel",
+    "create": "Create",
+    "created": "Tree created.",
+    "deleted": "Tree deleted.",
+    "createFail": "Failed to create tree.",
+    "deleteFail": "Failed to delete tree."
   }
 }
