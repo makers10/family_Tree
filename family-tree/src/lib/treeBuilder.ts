@@ -148,3 +148,38 @@ export function getPeopleAtGeneration(
   }
   return [...current]
 }
+
+export function calculateMaxGenerations(people: Person[], relationships: Relationship[]): number {
+  if (people.length === 0) return 0
+  
+  const childrenOf = new Map<string, string[]>()
+  const hasParent = new Set<string>()
+  
+  for (const r of relationships) {
+    if (r.relationshipType !== 'parent_child') continue
+    const list = childrenOf.get(r.personAId) ?? []
+    list.push(r.personBId)
+    childrenOf.set(r.personAId, list)
+    hasParent.add(r.personBId)
+  }
+  
+  const roots = people.filter(p => !hasParent.has(p.id))
+  
+  let maxDepth = 0
+  const memo = new Map<string, number>()
+
+  function getDepth(personId: string): number {
+    if (memo.has(personId)) return memo.get(personId)!
+    const children = childrenOf.get(personId) ?? []
+    if (children.length === 0) return 1
+    const depth = 1 + Math.max(0, ...children.map(getDepth))
+    memo.set(personId, depth)
+    return depth
+  }
+
+  for (const root of roots) {
+    maxDepth = Math.max(maxDepth, getDepth(root.id))
+  }
+  
+  return maxDepth
+}

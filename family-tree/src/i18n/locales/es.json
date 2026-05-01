@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "features": "Características",
+    "heritage": "Herencia",
+    "pricing": "Precios",
+    "signIn": "Iniciar sesión",
+    "getStarted": "Empezar"
+  },
+  "hero": {
+    "badge": "Hecho para familias indias",
+    "title": "Preserve su legado familiar para siempre",
+    "subtitle": "Construya su árbol genealógico digital, rastree su herencia Gotra y Kul, y comparta su historia con las generaciones venideras.",
+    "cta": "Comience su árbol gratis",
+    "users": "Más de 1,000 familias indias se han unido"
+  },
+  "pricing": {
+    "title": "Precios simples y transparentes",
+    "subtitle": "Elija el plan que se adapte a las necesidades de su familia.",
+    "free": {
+      "name": "Gratis",
+      "desc": "Perfecto para personas que recién comienzan.",
+      "price": "₹0",
+      "duration": "/ para siempre",
+      "feat1": "1 Árbol Genealógico",
+      "feat2": "Hasta 2 Generaciones",
+      "feat3": "Solo vista básica",
+      "feat4": "Acceso móvil"
+    },
+    "family": {
+      "name": "Familiar",
+      "desc": "Lo mejor para grupos familiares completos.",
+      "price": "₹149",
+      "duration": "/ mes",
+      "feat1": "3 Árboles Genealógicos",
+      "feat2": "Generaciones ilimitadas",
+      "feat3": "Exportación PDF e Imagen",
+      "feat4": "Carga de fotos",
+      "feat5": "Invitaciones por WhatsApp"
+    },
+    "upgrade": "Actualizar ahora",
+    "getStarted": "Empezar"
+  },
+  "tree": {
+    "back": "Volver a los árboles",
+    "people": "personas",
+    "invite": "Invitar",
+    "relationship": "Relación",
+    "addPerson": "Agregar persona",
+    "share": "Compartir",
+    "legend": "Leyenda",
+    "parentChild": "Padre/Hijo",
+    "spouse": "Cónyuge",
+    "sibling": "Hermano/a",
+    "extramarital": "Extramatrimonial"
+  }
+}

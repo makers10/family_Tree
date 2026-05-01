@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "features": "Features",
+    "heritage": "Heritage",
+    "pricing": "Pricing",
+    "signIn": "Sign In",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Made for Indian Families",
+    "title": "Preserve Your Family Legacy Forever",
+    "subtitle": "Build your digital family tree, track your Gotra and Kul heritage, and share your history with generations to come. The only family tree app built specifically for the Indian culture.",
+    "cta": "Start Your Tree Free",
+    "users": "Joined by 1,000+ Indian families"
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your family's needs.",
+    "free": {
+      "name": "Free",
+      "desc": "Perfect for individuals just starting out.",
+      "price": "₹0",
+      "duration": "/ forever",
+      "feat1": "1 Family Tree",
+      "feat2": "Up to 2 Generations",
+      "feat3": "Basic View Only",
+      "feat4": "Mobile Access"
+    },
+    "family": {
+      "name": "Family",
+      "desc": "Best for entire family groups.",
+      "price": "₹149",
+      "duration": "/ month",
+      "feat1": "3 Family Trees",
+      "feat2": "Unlimited Generations",
+      "feat3": "PDF & Image Export",
+      "feat4": "Photo Uploads",
+      "feat5": "WhatsApp Invitations"
+    },
+    "upgrade": "Upgrade Now",
+    "getStarted": "Get Started"
+  },
+  "tree": {
+    "back": "Back to trees",
+    "people": "people",
+    "invite": "Invite",
+    "relationship": "Relationship",
+    "addPerson": "Add Person",
+    "share": "Share",
+    "legend": "Legend",
+    "parentChild": "Parent/Child",
+    "spouse": "Spouse",
+    "sibling": "Sibling",
+    "extramarital": "Extramarital"
+  },
+  "heritage": {
+    "title": "Deeply Rooted in Indian Heritage",
+    "subtitle": "Traditional tools don't understand our culture. We built Vanshavali with features that actually matter to Indian families.",
+    "feat1": {
+      "title": "Gotra & Kul Tracking",
+      "desc": "Preserve your lineage according to your community's traditions (Rajput, Brahmin, Jain, etc)."
+    },
+    "feat2": {
+      "title": "Native Village (Mool)",
+      "desc": "Never lose connection to your ancestral village and roots in Bharat."
+    },
+    "feat3": {
+      "title": "Joint Family Support",
+      "desc": "Visualize complex joint family structures with ease, from patriarchs to the newest branch."
+    }
+  },
+  "features": {
+    "title": "Powerful Tools for Your Family History",
+    "subtitle": "Vanshavali provides a sophisticated canvas where you can map relationships, upload old photos, and record the stories of your ancestors. It's more than a tree; it's a living archive.",
+    "list1": "Unlimited generations and members",
+    "list2": "Nakshatra and Rashi astrology tracking",
+    "list3": "Automatic layout with Dagre algorithm",
+    "list4": "Mobile-first design for all relatives"
+  }
+}

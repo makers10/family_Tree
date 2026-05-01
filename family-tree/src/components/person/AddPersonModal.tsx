@@ -58,12 +58,6 @@ export function AddPersonModal({ open, onClose, treeId }: AddPersonModalProps) {
     e.preventDefault()
     if (!validate()) return
 
-    // PAYWALL: Enforce 10 person limit for free users
-    if (!isPremium && people.length >= 10) {
-      setShowUpgrade(true)
-      return
-    }
-
     setSaving(true)
     try {
       let photoUrl: string | null = null

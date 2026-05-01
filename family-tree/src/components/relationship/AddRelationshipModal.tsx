@@ -6,7 +6,10 @@ import { Button } from '@/components/ui/Button'
 import { useTreeStore } from '@/store/useTreeStore'
 import { useRelationships } from '@/hooks/useRelationships'
 import { useToast } from '@/components/ui/Toast'
-import type { RelationshipType } from '@/types'
+import { useSubscription } from '@/hooks/useSubscription'
+import { calculateMaxGenerations } from '@/lib/treeBuilder'
+import { UpgradeModal } from '@/components/ui/UpgradeModal'
+import type { Relationship, RelationshipType } from '@/types'
 
 interface AddRelationshipModalProps {
   open: boolean
@@ -15,8 +18,9 @@ interface AddRelationshipModalProps {
 }
 
 export function AddRelationshipModal({ open, onClose, treeId }: AddRelationshipModalProps) {
-  const { people } = useTreeStore()
+  const { people, relationships } = useTreeStore()
   const { createRelationship } = useRelationships(treeId)
+  const { isPremium } = useSubscription()
   const { toast } = useToast()
 
   const [form, setForm] = useState({
@@ -27,6 +31,7 @@ export function AddRelationshipModal({ open, onClose, treeId }: AddRelationshipM
   })
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [showUpgrade, setShowUpgrade] = useState(false)
 
   const personOptions = [
     { value: '', label: 'Select person...' },
@@ -47,6 +52,29 @@ export function AddRelationshipModal({ open, onClose, treeId }: AddRelationshipM
     if (form.personAId === form.personBId) { setError('A person cannot be related to themselves.'); return }
     setSaving(true)
     try {
+      // PAYWALL: Enforce 2 generation limit for free users
+      if (!isPremium && form.relationshipType === 'parent_child') {
+        const simulatedRels: Relationship[] = [
+          ...relationships,
+          {
+            id: 'temp',
+            treeId,
+            personAId: form.personAId,
+            personBId: form.personBId,
+            relationshipType: 'parent_child',
+            isBiological: form.isBiological,
+            createdAt: '',
+            updatedAt: ''
+          } as Relationship
+        ]
+        const gens = calculateMaxGenerations(people, simulatedRels)
+        if (gens > 2) {
+          setShowUpgrade(true)
+          setSaving(false)
+          return
+        }
+      }
+
       await createRelationship({
         treeId,
         personAId: form.personAId,
@@ -106,6 +134,7 @@ export function AddRelationshipModal({ open, onClose, treeId }: AddRelationshipM
           <Button type="submit" loading={saving}>Add Relationship</Button>
         </div>
       </form>
+      <UpgradeModal open={showUpgrade} onClose={() => setShowUpgrade(false)} reason="limit" />
     </Modal>
   )
 }

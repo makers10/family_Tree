@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "features": "功能",
+    "heritage": "传承",
+    "pricing": "价格",
+    "signIn": "登录",
+    "getStarted": "开始使用"
+  },
+  "hero": {
+    "badge": "为印度家庭打造",
+    "title": "永久保存您的家族传承",
+    "subtitle": "建立您的数字家谱，追踪您的 Gotra 和 Kul 传承，并与后代分享您的历史。",
+    "cta": "免费开始建立家谱",
+    "users": "已有 1,000 多个印度家庭加入"
+  },
+  "pricing": {
+    "title": "简单透明的价格",
+    "subtitle": "选择适合您家庭需求的计划。",
+    "free": {
+      "name": "免费",
+      "desc": "适合刚开始使用的个人。",
+      "price": "₹0",
+      "duration": "/ 永久",
+      "feat1": "1 个家庭树",
+      "feat2": "最多 2 代",
+      "feat3": "仅限基本查看",
+      "feat4": "手机端访问"
+    },
+    "family": {
+      "name": "家庭计划",
+      "desc": "最适合整个家庭群体。",
+      "price": "₹149",
+      "duration": "/ 月",
+      "feat1": "3 个家庭树",
+      "feat2": "无限代数",
+      "feat3": "PDF 和图像导出",
+      "feat4": "照片上传",
+      "feat5": "WhatsApp 邀请"
+    },
+    "upgrade": "立即升级",
+    "getStarted": "开始使用"
+  },
+  "tree": {
+    "back": "返回家谱列表",
+    "people": "人",
+    "invite": "邀请",
+    "relationship": "关系",
+    "addPerson": "添加成员",
+    "share": "分享",
+    "legend": "图例",
+    "parentChild": "父母/子女",
+    "spouse": "配偶",
+    "sibling": "兄弟姐妹",
+    "extramarital": "婚外关系"
+  }
+}

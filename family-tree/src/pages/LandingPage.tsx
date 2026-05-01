@@ -7,11 +7,39 @@ import {
   MapPin, 
   Sparkles,
   ArrowRight,
-  Check
+  Check,
+  ChevronDown,
+  Plus
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
+
+function FAQItem({ question, answer }: { question: string, answer: string }) {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  return (
+    <div className="border-b border-slate-100 dark:border-slate-800 last:border-0">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-4 flex items-center justify-between text-left hover:text-indigo-600 transition-colors"
+      >
+        <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">{question}</span>
+        {isOpen ? <ChevronDown className="w-4 h-4 text-indigo-500" /> : <Plus className="w-4 h-4 text-slate-400" />}
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-40 pb-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+          {answer}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 export function LandingPage() {
+  const { t } = useTranslation()
+  
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 overflow-hidden">
       {/* Navbar */}
@@ -26,17 +54,18 @@ export function LandingPage() {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
-            <a href="#features" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Features</a>
-            <a href="#heritage" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Heritage</a>
-            <a href="#pricing" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pricing</a>
+            <a href="#features" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{t('nav.features')}</a>
+            <a href="#heritage" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{t('nav.heritage')}</a>
+            <a href="#pricing" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">{t('nav.pricing')}</a>
           </div>
           <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <Link to="/login" className="text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-              Sign In
+              {t('nav.signIn')}
             </Link>
             <Link to="/login">
               <Button size="sm" className="rounded-full px-6 shadow-indigo-200 dark:shadow-indigo-900/20">
-                Get Started
+                {t('nav.getStarted')}
               </Button>
             </Link>
           </div>
@@ -48,18 +77,18 @@ export function LandingPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-slide-up">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
-              <Sparkles className="w-3 h-3" /> Made for Indian Families
+              <Sparkles className="w-3 h-3" /> {t('hero.badge')}
             </div>
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
-              Preserve Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600">Family Legacy</span> Forever
+              {t('hero.title').split('Family Legacy')[0]}<span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-pink-600">Family Legacy</span>{t('hero.title').split('Family Legacy')[1]}
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-xl">
-              Build your digital family tree, track your Gotra and Kul heritage, and share your history with generations to come. The only family tree app built specifically for the Indian culture.
+              {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/login">
                 <Button size="lg" className="rounded-full px-8 h-14 text-lg shadow-xl shadow-indigo-500/20 w-full sm:w-auto">
-                  Start Your Tree Free <ArrowRight className="ml-2 w-5 h-5" />
+                  {t('hero.cta')} <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 justify-center sm:justify-start mt-2 sm:mt-0">
@@ -68,7 +97,7 @@ export function LandingPage() {
                   <img src="/avatar-2.png" className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-950 object-cover" alt="User" />
                   <img src="/avatar-3.png" className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-950 object-cover" alt="User" />
                 </div>
-                <span className="font-medium ml-2">Joined by 1,000+ Indian families</span>
+                <span className="font-medium ml-2">{t('hero.users')}</span>
               </div>
             </div>
           </div>
@@ -88,27 +117,27 @@ export function LandingPage() {
       {/* Cultural Heritage Section */}
       <section id="heritage" className="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Deeply Rooted in <span className="text-indigo-600">Indian Heritage</span></h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">{t('heritage.title').split('Indian Heritage')[0]}<span className="text-indigo-600">Indian Heritage</span>{t('heritage.title').split('Indian Heritage')[1]}</h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Traditional tools don't understand our culture. We built Vanshavali with features that actually matter to Indian families.
+            {t('heritage.subtitle')}
           </p>
         </div>
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
           {[
             {
               icon: <Sparkles className="w-6 h-6 text-amber-500" />,
-              title: "Gotra & Kul Tracking",
-              desc: "Preserve your lineage according to your community's traditions (Rajput, Brahmin, Jain, etc)."
+              title: t('heritage.feat1.title'),
+              desc: t('heritage.feat1.desc')
             },
             {
               icon: <MapPin className="w-6 h-6 text-emerald-500" />,
-              title: "Native Village (Mool)",
-              desc: "Never lose connection to your ancestral village and roots in Bharat."
+              title: t('heritage.feat2.title'),
+              desc: t('heritage.feat2.desc')
             },
             {
               icon: <Users className="w-6 h-6 text-indigo-500" />,
-              title: "Joint Family Support",
-              desc: "Visualize complex joint family structures with ease, from patriarchs to the newest branch."
+              title: t('heritage.feat3.title'),
+              desc: t('heritage.feat3.desc')
             }
           ].map((item, idx) => (
             <div key={idx} className="p-8 rounded-2xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-shadow">
@@ -150,16 +179,16 @@ export function LandingPage() {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Powerful Tools for Your <span className="text-pink-600">Family History</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">{t('features.title').split('Family History')[0]}<span className="text-pink-600">Family History</span>{t('features.title').split('Family History')[1]}</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-              Vanshavali provides a sophisticated canvas where you can map relationships, upload old photos, and record the stories of your ancestors. It's more than a tree; it's a living archive.
+              {t('features.subtitle')}
             </p>
             <ul className="space-y-4">
               {[
-                "Unlimited generations and members",
-                "Nakshatra and Rashi astrology tracking",
-                "Automatic layout with Dagre algorithm",
-                "Mobile-first design for all relatives"
+                t('features.list1'),
+                t('features.list2'),
+                t('features.list3'),
+                t('features.list4')
               ].map((text, i) => (
                 <li key={i} className="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-medium">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center">
@@ -176,27 +205,27 @@ export function LandingPage() {
       {/* Pricing Section */}
       <section id="pricing" className="py-24 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto px-4 text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Simple, Transparent Pricing</h2>
-          <p className="text-slate-600 dark:text-slate-400">Choose the plan that fits your family's needs.</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">{t('pricing.title')}</h2>
+          <p className="text-slate-600 dark:text-slate-400">{t('pricing.subtitle')}</p>
         </div>
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 px-4">
           {/* Free Tier */}
           <div className="p-10 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm relative overflow-hidden">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Free</h3>
-            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">Perfect for individuals just starting out.</p>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.free.name')}</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.free.desc')}</p>
             <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">₹0</span>
-              <span className="text-slate-500 text-sm">/ forever</span>
+              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.free.price')}</span>
+              <span className="text-slate-500 text-sm">{t('pricing.free.duration')}</span>
             </div>
             <ul className="space-y-4 mb-10">
-              {["1 Family Tree", "Up to 15 Members", "Basic View Only", "Mobile Access"].map((feat, i) => (
+              {[t('pricing.free.feat1'), t('pricing.free.feat2'), t('pricing.free.feat3'), t('pricing.free.feat4')].map((feat, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <Check className="w-4 h-4 text-indigo-500" /> {feat}
                 </li>
               ))}
             </ul>
             <Link to="/login" className="block">
-              <Button variant="secondary" className="w-full rounded-xl">Get Started</Button>
+              <Button variant="secondary" className="w-full rounded-xl">{t('pricing.getStarted')}</Button>
             </Link>
           </div>
           
@@ -205,22 +234,124 @@ export function LandingPage() {
             <div className="absolute top-0 right-0 bg-indigo-500 text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-bl-xl">
               Most Popular
             </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Family</h3>
-            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">Best for entire family groups.</p>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{t('pricing.family.name')}</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 text-sm">{t('pricing.family.desc')}</p>
             <div className="flex items-baseline gap-1 mb-8">
-              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">₹149</span>
-              <span className="text-slate-500 text-sm">/ month</span>
+              <span className="text-4xl font-extrabold text-slate-900 dark:text-white">{t('pricing.family.price')}</span>
+              <span className="text-slate-500 text-sm">{t('pricing.family.duration')}</span>
             </div>
             <ul className="space-y-4 mb-10">
-              {["3 Family Trees", "Up to 100 Members", "PDF & Image Export", "Photo Uploads", "WhatsApp Invitations"].map((feat, i) => (
+              {[t('pricing.family.feat1'), t('pricing.family.feat2'), t('pricing.family.feat3'), t('pricing.family.feat4'), t('pricing.family.feat5')].map((feat, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                   <Check className="w-4 h-4 text-indigo-500" /> {feat}
                 </li>
               ))}
             </ul>
             <Link to="/login" className="block">
-              <Button className="w-full rounded-xl shadow-lg shadow-indigo-500/20">Upgrade Now</Button>
+              <Button className="w-full rounded-xl shadow-lg shadow-indigo-500/20">{t('pricing.upgrade')}</Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Privacy & Security Section */}
+      <section className="py-24 px-4 bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-6">
+              <Shield className="w-6 h-6 text-emerald-600" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Your Family Secrets are <span className="text-emerald-600">Safe with Us</span></h2>
+            <div className="space-y-6">
+              {[
+                { title: "No Data Selling", desc: "Unlike social media, we never sell your family's data or photos to advertisers." },
+                { title: "Private by Default", desc: "Your tree is only visible to you and the relatives you explicitly invite." },
+                { title: "Encrypted Storage", desc: "All your photos and records are stored with enterprise-grade encryption." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <div className="w-1 h-auto bg-emerald-500 rounded-full" />
+                  <div>
+                    <h4 className="font-bold text-slate-900 dark:text-white">{item.title}</h4>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h3>
+            <div className="space-y-3">
+              {[
+                { q: "Is it really free for 10 members?", a: "Yes, you can build a complete small tree with up to 10 members without paying a single rupee. No credit card required." },
+                { q: "Can I download my tree to print?", a: "Absolutely! The Family Plan allows you to export high-resolution PDFs and images ready for professional framing." },
+                { q: "How do I invite my relatives?", a: "Just click 'Invite' on your tree page to get a special WhatsApp link. Anyone with the link can join and contribute." },
+                { q: "Is my data safe if I delete my account?", a: "Yes, we respect your privacy. When you delete your account, all your data, relationships, and photos are permanently erased." },
+                { q: "Can I use it in Hindi or other languages?", a: "You can type names and bios in any Indian language. Our interface is currently in English, with more languages coming soon." }
+              ].map((faq, i) => (
+                <FAQItem key={i} question={faq.q} answer={faq.a} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="py-24 bg-slate-50 dark:bg-slate-900/50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Family History <span className="text-pink-600">Resources</span></h2>
+              <p className="text-slate-600 dark:text-slate-400">
+                Learn how to trace your roots and preserve your family stories with our expert guides.
+              </p>
+            </div>
+            <Button variant="ghost" className="text-indigo-600 group">
+              View all articles <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { 
+                title: "How to Trace Your Gotra", 
+                desc: "A beginner's guide to understanding your lineage and finding your ancestral roots in Bharat.",
+                tag: "Heritage",
+                date: "5 min read"
+              },
+              { 
+                title: "Digitizing Old Family Photos", 
+                desc: "Learn the best ways to scan and preserve your grandfather's precious old photographs.",
+                tag: "Tutorial",
+                date: "8 min read"
+              },
+              { 
+                title: "The Magic of Joint Families", 
+                desc: "Why building a family tree is the best way to keep your cousins and relatives connected.",
+                tag: "Culture",
+                date: "4 min read"
+              }
+            ].map((blog, i) => (
+              <div key={i} className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-xl transition-all group cursor-pointer">
+                <div className="h-48 bg-slate-200 dark:bg-slate-700 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-pink-500/20 group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute top-4 left-4 px-2 py-1 bg-white/90 dark:bg-slate-900/90 rounded text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                    {blog.tag}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-indigo-600 transition-colors">
+                    {blog.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 line-clamp-2">
+                    {blog.desc}
+                  </p>
+                  <div className="flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                    <span>Vanshavali Blog</span>
+                    <span>{blog.date}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

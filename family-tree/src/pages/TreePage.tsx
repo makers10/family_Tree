@@ -11,6 +11,8 @@ import { AddRelationshipModal } from '@/components/relationship/AddRelationshipM
 import { InviteModal } from '@/components/tree/InviteModal'
 import { Button } from '@/components/ui/Button'
 import { useToast } from '@/components/ui/Toast'
+import { useTranslation } from 'react-i18next'
+import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
 import { ArrowLeft, UserPlus, Link2, Share2, Trees, Moon, Sun, UserCheck } from 'lucide-react'
 
 export function TreePage() {
@@ -18,6 +20,7 @@ export function TreePage() {
   const navigate = useNavigate()
   const { trees } = useTrees()
   const { toast } = useToast()
+  const { t } = useTranslation()
   const canvasRef = useRef<HTMLDivElement | null>(null)
 
   usePeople(treeId)
@@ -68,18 +71,19 @@ export function TreePage() {
           <h1 className="font-semibold text-slate-900 dark:text-white truncate">
             {tree?.name ?? 'Family Tree'}
           </h1>
-          <span className="text-xs text-slate-400 flex-shrink-0">{people.length} people</span>
+          <span className="text-xs text-slate-400 flex-shrink-0">{people.length} {t('tree.people')}</span>
         </div>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           <Button variant="outline" size="sm" onClick={() => setShowInvite(true)} className="hidden sm:flex border-emerald-200 dark:border-emerald-900/30 text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-900/20">
-            <UserCheck size={14} className="mr-1" /> Invite
+            <UserCheck size={14} className="mr-1" /> {t('tree.invite')}
           </Button>
           <Button variant="secondary" size="sm" onClick={() => setShowAddRel(true)} disabled={people.length < 2}>
-            <Link2 size={14} /> <span className="hidden sm:inline">Relationship</span>
+            <Link2 size={14} /> <span className="hidden sm:inline">{t('tree.relationship')}</span>
           </Button>
           <Button size="sm" onClick={() => setShowAddPerson(true)}>
-            <UserPlus size={14} /> <span className="hidden sm:inline">Add Person</span>
+            <UserPlus size={14} /> <span className="hidden sm:inline">{t('tree.addPerson')}</span>
           </Button>
           <Button variant="ghost" size="sm" onClick={handleShare}>
             <Share2 size={14} />
@@ -96,12 +100,12 @@ export function TreePage() {
 
       {/* Legend */}
       <div className="flex items-center gap-4 px-4 py-2 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400 flex-shrink-0">
-        <span className="font-medium">Legend:</span>
+        <span className="font-medium">{t('tree.legend')}:</span>
         {[
-          { color: '#6366f1', dash: 'none', label: 'Parent/Child' },
-          { color: '#ec4899', dash: '8 3', label: 'Spouse' },
-          { color: '#22c55e', dash: '4 4', label: 'Sibling' },
-          { color: '#f97316', dash: '2 4', label: 'Extramarital' },
+          { color: '#6366f1', dash: 'none', label: t('tree.parentChild') },
+          { color: '#ec4899', dash: '8 3', label: t('tree.spouse') },
+          { color: '#22c55e', dash: '4 4', label: t('tree.sibling') },
+          { color: '#f97316', dash: '2 4', label: t('tree.extramarital') },
         ].map((item) => (
           <div key={item.label} className="flex items-center gap-1.5">
             <svg width="24" height="8">
